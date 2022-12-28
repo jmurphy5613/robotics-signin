@@ -7,12 +7,14 @@ const Create = () => {
     return (
         <div className={styles.container}>
             <div className={styles["form-container"]}>
+                <label>Event name</label>
                 <input
-                    placeholder="Event name"
+                    placeholder="Some random meeting lol"
                     className={styles["string-input"]}
                 />
+                <label>Event description</label>
                 <textarea
-                    placeholder="Event description"
+                    placeholder="We're going to do soooo much work..."
                     className={styles.textarea}
                 />
                 <label>Start Date</label>

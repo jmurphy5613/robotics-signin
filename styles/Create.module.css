@@ -16,8 +16,13 @@
     font-family: "Inter", sans-serif;
 }
 
+.container label {
+    font-family: "Inter", sans-serif;
+    font-size: 0.9rem;
+}
+
 .form-container {
-    height: 60%;
+    min-height: 60%;
     width: 70%;
     background-color: #1f2937;
     display: flex;
@@ -37,7 +42,7 @@
     width: 100%;
     border-radius: 0.5rem;
     padding: 0.625rem;
-    margin: 1rem 0 1rem 0;
+    margin: 0.5rem 0 1rem 0;
 }
 .string-input:focus {
     outline: none;
@@ -52,9 +57,36 @@
     width: 100%;
     border-radius: 0.5rem;
     padding: 0.625rem;
-    margin: 1rem 0 1rem 0;
+    margin: 0.5rem 0 1rem 0;
 }
 
 .button {
-    
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    border-radius: 0.375rem;
+    background-color: #1b64f2;
+    color: white;
+    font-family: "Inter", sans-serif;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;   
+    margin: 1rem 0 0 0;
+}
+
+.date {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.date-input {
+    border: 1px solid #4b5563;
+    background-color: #374151;
+    color: #9ba2ae;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    padding: 0.25rem;
+    border-radius: 5px;
+    margin: 0.5rem 0 1rem 0;
 }
