@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import LoginLogout from '../loginlogout/LoginLogout'
 import styles from './UserIcon.module.css'
 
 type UserIconProps = {
@@ -14,7 +15,7 @@ const UserIcon:React.FC<UserIconProps> = ({ image }) => {
             <img className={styles.image} src={image} />
             {showPopup && (
                 <div className={styles["popup-container"]}>
-                    <button>Logout</button>
+                    <LoginLogout login={false} />
                 </div>
             )}
         </div>

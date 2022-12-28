@@ -15,7 +15,7 @@ const Navbar = () => {
         <div className={styles.container}>
             <h1 className={styles.name}>Jordan: Sign in and Out</h1>
             <div className={styles["align-right"]}>
-                { user?.picture ? <UserIcon image={user.picture} /> : <LoginLogout />}
+                { user?.picture ? <UserIcon image={user.picture} /> : <LoginLogout login={true} />}
             </div>
         </div>
     );

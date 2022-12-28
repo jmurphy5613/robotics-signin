@@ -5,15 +5,20 @@ type LoginLogoutProps = {
     login: boolean
 }
 
-const LoginLogout:React.FC<LoginLogoutProps> = () => {
+const LoginLogout:React.FC<LoginLogoutProps> = ({ login }) => {
 
     const router = useRouter()
 
     return (
         <div>
-            <button onClick={() => {
+            {login ? <button onClick={() => {
                 router.push('/api/auth/login')
             }} className={styles.login}>Login</button>
+            :
+            <button className={styles.logout} onClick={() => {
+                router.push('/api/auth/logout')
+            }}>Logout</button>
+            }
         </div>
     )
 }
