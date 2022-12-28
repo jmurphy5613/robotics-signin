@@ -1,9 +1,19 @@
 import styles from './LoginLogout.module.css'
+import { useRouter } from 'next/router'
 
-const LoginLogout = () => {
+type LoginLogoutProps = {
+    login: boolean
+}
+
+const LoginLogout:React.FC<LoginLogoutProps> = () => {
+
+    const router = useRouter()
+
     return (
         <div>
-            <button className={styles.login}>Login</button>
+            <button onClick={() => {
+                router.push('/api/auth/login')
+            }} className={styles.login}>Login</button>
         </div>
     )
 }
