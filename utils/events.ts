@@ -22,12 +22,12 @@ export const createEvent = async (
     //create random 5 digit code
     const code = Math.floor(Math.random()*90000) + 10000
 
-    fetch(apiURL, {
-        method: 'POST',
-        headers: {
-
-        }
+    axios.post(`${apiURL}/events/create`, {
+        startDate: startDate,
+        endDate: endDate,
+        code: code,
+        title: name
     }).then(res => {
         console.log(res)
-    })
+    });
 }

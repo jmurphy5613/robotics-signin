@@ -1,5 +1,7 @@
+import axios from 'axios';
 import { useState } from 'react';
 import styles from '../styles/Create.module.css'
+import { createEvent } from '../utils/events';
 
 const Create = () => {
 
@@ -8,17 +10,36 @@ const Create = () => {
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
 
-    const [startYear, setStartYear] = useState('')
-    const [startMonth, setStartMonth] = useState('')
-    const [startDay, setStartDay] = useState('')
-    const [startHour, setStartHour] = useState('')
-    const [startMinute, setStartMinute] = useState('')
+    const [startYear, setStartYear] = useState<number>(0)
+    const [startMonth, setStartMonth] = useState<number>(0)
+    const [startDay, setStartDay] = useState<number>(0)
+    const [startHour, setStartHour] = useState<number>(0)
+    const [startMinute, setStartMinute] = useState<number>(0)
 
-    const [endYear, setEndYear] = useState('')
-    const [endMonth, setEndMonth] = useState('')
-    const [endDay, setEndDay] = useState('')
-    const [endHour, setEndHour] = useState('')
-    const [endMinute, setEndMinute] = useState('')
+    const [endYear, setEndYear] = useState<number>(0)
+    const [endMonth, setEndMonth] = useState<number>(0)
+    const [endDay, setEndDay] = useState<number>(0)
+    const [endHour, setEndHour] = useState<number>(0)
+    const [endMinute, setEndMinute] = useState<number>(0)
+
+    const onSubmit = async () => {
+        const res = await createEvent(
+            name,
+            description,
+            startYear,
+            startMonth,
+            startDay,
+            startHour,
+            startMinute,
+            endYear,
+            endMonth,
+            endDay,
+            endHour,
+            endMinute
+        )
+
+       
+    }
 
     return (
         <div className={styles.container}>
@@ -42,80 +63,92 @@ const Create = () => {
                 <label>Start Date</label>
                 <div className={styles.date}>
                     <input
+                        type="number"
                         placeholder="Year"
                         className={styles["date-input"]}
                         onChange={(e) => {
-                            setStartYear(e.target.value);
+                            setStartYear(e.target.valueAsNumber);
                         }}
                     />
                     <input
+                        type="number"
                         placeholder="Month"
                         className={styles["date-input"]}
                         onChange={(e) => {
-                            setStartMonth(e.target.value);
+                            setStartMonth(e.target.valueAsNumber);
                         }}
                     />
                     <input
+                        type="number"
                         placeholder="Day"
                         className={styles["date-input"]}
                         onChange={(e) => {
-                            setStartDay(e.target.value);
+                            setStartDay(e.target.valueAsNumber);
                         }}
                     />
                     <input
+                        type="number"
                         placeholder="Hour"
                         className={styles["date-input"]}
                         onChange={(e) => {
-                            setStartHour(e.target.value);
+                            setStartHour(e.target.valueAsNumber);
                         }}
                     />
                     <input
+                        type="number"
                         placeholder="Minute"
                         className={styles["date-input"]}
                         onChange={(e) => {
-                            setStartMinute(e.target.value);
+                            setStartMinute(e.target.valueAsNumber);
                         }}
                     />
                 </div>
                 <label>End Date</label>
                 <div className={styles.date}>
                     <input
+                        type="number"
                         placeholder="Year"
                         className={styles["date-input"]}
                         onChange={(e) => {
-                            setEndYear(e.target.value);
+                            setEndYear(e.target.valueAsNumber);
                         }}
                     />
                     <input
+                        type="number"
                         placeholder="Month"
                         className={styles["date-input"]}
                         onChange={(e) => {
-                            setEndMonth(e.target.value);
+                            setEndMonth(e.target.valueAsNumber);
                         }}
                     />
                     <input
+                        type="number"
                         placeholder="Day"
                         className={styles["date-input"]}
                         onChange={(e) => {
-                            setEndDay(e.target.value);
+                            setEndDay(e.target.valueAsNumber);
                         }}
                     />
                     <input
+                        type="number"
                         placeholder="Hour"
                         className={styles["date-input"]}
                         onChange={(e) => {
-                            setEndHour(e.target.value);
+                            setEndHour(e.target.valueAsNumber);
                         }}
                     />
                     <input
+                        type="number"
                         placeholder="Minute"
                         className={styles["date-input"]}
                         onChange={(e) => {
-                            setEndMinute(e.target.value);
+                            setEndMinute(e.target.valueAsNumber);
                         }}
                     />
                 </div>
-                <button className={styles.button}>Create Event</button>
+                <button className={styles.button} onClick={onSubmit}>
+                    Create Event
+                </button>
             </div>
         </div>
     );
