@@ -16,8 +16,8 @@ export const createEvent = async (
     endHour: number,
     endMinute: number
 ) => {
-    const startDate = new Date(startYear, startMonth, startDay, startHour, startMinute)
-    const endDate = new Date(endYear, endMonth, endDay, endHour, endMinute)
+    const startDate = new Date(startYear, startMonth-1, startDay, startHour, startMinute)
+    const endDate = new Date(endYear, endMonth-1, endDay, endHour, endMinute)
 
     //create random 5 digit code
     const code = Math.floor(Math.random()*90000) + 10000
