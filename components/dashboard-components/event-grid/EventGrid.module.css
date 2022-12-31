@@ -1,0 +1,40 @@
+.grid {
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 3rem;
+    grid-gap: 2rem;
+}
+
+.grid-item {
+    height: 10vh;
+    background-color: #1f2937;
+    border: 1px solid rgb(229, 231, 235, 0.15);    
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.5s ease;
+    padding: 1.5rem;
+}
+
+.grid-item:hover {
+    scale: 1.02;
+}
+
+.create {
+    height: 10vh;
+    border: 1px solid #333;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-style: dashed;
+    cursor: pointer;
+}
+
+.title {
+    font-family: "Inter", sans-serif;
+    font-size: 1.5rem;
+}

@@ -11,7 +11,6 @@ const Dashboard = () => {
 
     const setEvents = async () => {
         const events = await getAllEvents()
-        console.log(events)
         setAllEvents(events)
     }
 
@@ -24,6 +23,7 @@ const Dashboard = () => {
     return (
         <div className={styles.container}>
             <IntroTitle />
+            <EventGrid events={allEvents} />
         </div>
     )
 }
