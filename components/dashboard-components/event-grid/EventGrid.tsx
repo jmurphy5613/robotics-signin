@@ -1,7 +1,7 @@
 import styles from './EventGrid.module.css'
 import { Event } from '../../../utils/types'
 import { IoIosAdd } from "react-icons/io/index";
-import  { IconContext } from 'react-icons/lib/esm/iconContext';
+import { IconContext } from 'react-icons';
 
 type EventGridProps = {
     events: Array<Event>
