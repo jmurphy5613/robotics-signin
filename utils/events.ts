@@ -31,3 +31,8 @@ export const createEvent = async (
         console.log(res)
     });
 }
+
+export const getAllEvents = async () => {
+    const response = await axios.get(`${apiURL}/events/get-all`)
+    return response.data
+}
