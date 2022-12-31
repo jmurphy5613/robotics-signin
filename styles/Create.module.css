@@ -13,6 +13,11 @@
     font-family: "Inter", sans-serif;
 }
 
+.container input:focus {
+    outline: 2px solid #1b64f2;
+}
+
+
 .container input::-webkit-outer-spin-button, .container input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
@@ -21,6 +26,10 @@
 .container textarea {
     font-family: "Inter", sans-serif;
     resize: none;
+}
+
+.container textarea:focus {
+    outline: 2px solid #1b64f2;
 }
 
 .container label {

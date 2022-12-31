@@ -2,10 +2,11 @@ import axios from 'axios';
 import { useState } from 'react';
 import styles from '../styles/Create.module.css'
 import { createEvent } from '../utils/events';
+import { useRouter } from 'next/router';
 
 const Create = () => {
 
-    //year, month, day, hour, minute --> year, month, day, hour, minute
+    const router = useRouter()
 
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
@@ -23,7 +24,7 @@ const Create = () => {
     const [endMinute, setEndMinute] = useState<number>(0)
 
     const onSubmit = async () => {
-        const res = await createEvent(
+        await createEvent(
             name,
             description,
             startYear,
@@ -37,8 +38,7 @@ const Create = () => {
             endHour,
             endMinute
         )
-
-       
+        router.push('/dashboard')
     }
 
     return (
