@@ -1,7 +1,10 @@
 import styles from './EventCard.module.css'
-import CodeModal from '../code-modal/CodeModal';
-import { useState } from 'react';
-import { Event } from '../../../../utils/types';
+import CodeModal from '../code-modal/CodeModal'
+import { useState } from 'react'
+import { Event } from '../../../../utils/types'
+import { useUser } from "@auth0/nextjs-auth0/client"
+import { doesUserExist } from '../../../../utils/requests/users'
+
 
 type EventCardProps = {
     event: Event
@@ -11,9 +14,28 @@ const EventCard:React.FC<EventCardProps> = ({ event }) => {
 
     const [showCodeModal, setShowCodeModal] = useState(false)
 
-    const createUserIfNeeded = () => {
+    const { user, isLoading } = useUser()
+
+    const createUserIfNeeded = async () => {
+        if(!user?.email) return
+        /* 
+        1. check if the user is in the database
+        2. if he is, just continue
+        3. if not, create that user
+
+        There is a whole seperate set of logic for 
+        determining if they get assigned so that wont be done here
+        */
+
+        const doesExist = await doesUserExist(user?.email)
+        if(doesExist) console.log("does exist")
+        if(!doesExist) {
+            console.log("doesn't exist")
+        }
 
     }
+
+    if(isLoading) return <div></div>
 
     return (
         <>
@@ -26,6 +48,7 @@ const EventCard:React.FC<EventCardProps> = ({ event }) => {
                         className={styles.going}
                         onClick={() => {
                             setShowCodeModal(true);
+                            createUserIfNeeded()
                         }}
                     >
                         I'm here!

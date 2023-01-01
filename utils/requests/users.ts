@@ -12,3 +12,9 @@ export const createUser = async (
         email: email
     })
 }
+
+export const doesUserExist = async (email: string) => {
+    const res = await axios.get(`${apiURL}/users/get-by-email/${email}`)
+    if(res.data.message) return false
+    return true
+}
