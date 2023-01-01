@@ -39,3 +39,8 @@ export const getAllEvents = async () => {
     const response = await axios.get(`${apiURL}/events/get-all`)
     return response.data
 }
+
+export const getEventById = async (id: number) => {
+    const response = await axios.get(`${apiURL}/events/get-by-id/${id}`)
+    return response.data
+}
