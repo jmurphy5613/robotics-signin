@@ -8,7 +8,7 @@ const EventCard = () => {
 
     return (
         <>
-            {showCodeModal && <CodeModal />}
+            {showCodeModal && <CodeModal setShowModal={setShowCodeModal} />}
             <div className={styles.container}>
                 <h1 className={styles.title}>Robotics Meeting 12/25</h1>
                 <h3 className={styles.description}>
