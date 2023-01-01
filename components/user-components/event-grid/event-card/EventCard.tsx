@@ -11,6 +11,10 @@ const EventCard:React.FC<EventCardProps> = ({ event }) => {
 
     const [showCodeModal, setShowCodeModal] = useState(false)
 
+    const createUserIfNeeded = () => {
+
+    }
+
     return (
         <>
             {showCodeModal && <CodeModal setShowModal={setShowCodeModal} />}

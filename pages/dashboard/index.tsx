@@ -2,7 +2,7 @@ import styles from "../../styles/Dashboard.module.css";
 import IntroTitle from "../../components/dashboard-components/intro-title/IntroTitle";
 import EventGrid from "../../components/dashboard-components/event-grid/EventGrid";
 import { Event } from "../../utils/types";
-import { getAllEvents } from "../../utils/events";
+import { getAllEvents } from "../../utils/requests/events";
 import { useEffect, useState } from "react";
 
 const Dashboard = () => {

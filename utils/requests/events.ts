@@ -1,6 +1,6 @@
 import axios from "axios"
 import { NextRouter } from "next/router"
-import { apiURL } from "./constants"
+import { apiURL } from "../constants"
 
 
 export const createEvent = async (

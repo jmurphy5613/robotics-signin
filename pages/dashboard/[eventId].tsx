@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import styles from '../../styles/EventProfile.module.css'
-import { getEventById } from '../../utils/events'
+import { getEventById } from '../../utils/requests/events'
 import { useRouter } from 'next/router'
 
 const EventPage = () => {

@@ -3,7 +3,7 @@ import MainTitle from "../components/user-components/main-title/MainTitle"
 import AdminButtons from "../components/user-components/admin-buttons/AdminButtons";
 import { useEffect, useState } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
-import { getAllEvents } from "../utils/events";
+import { getAllEvents } from "../utils/requests/events";
 import EventGrid from "../components/user-components/event-grid/EventGrid";
 import { Event } from "../utils/types";
 

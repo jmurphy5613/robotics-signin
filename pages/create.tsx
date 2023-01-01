@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react';
 import styles from '../styles/Create.module.css'
-import { createEvent } from '../utils/events';
+import { createEvent } from '../utils/requests/events';
 import { useRouter } from 'next/router';
 
 const Create = () => {
