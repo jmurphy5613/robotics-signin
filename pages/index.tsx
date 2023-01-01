@@ -1,13 +1,25 @@
 import styles from "../styles/Home.module.css"
 import MainTitle from "../components/user-components/main-title/MainTitle"
-import EventCard from "../components/user-components/event-card/EventCard"
 import AdminButtons from "../components/user-components/admin-buttons/AdminButtons";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
+import { getAllEvents } from "../utils/events";
+import EventGrid from "../components/user-components/event-grid/EventGrid";
 
 const Home = () => {
 
     const { user, isLoading } = useUser()
+
+    const [events, setEvents] = useState<Array<Event>>([])
+
+    const setEventsData = async () => {
+        const allEvents = await getAllEvents()
+        setEvents(allEvents)
+    }
+
+    useEffect(() => {
+        setEventsData()
+    }, [])
 
     if(isLoading) return <div></div>
 
@@ -15,7 +27,7 @@ const Home = () => {
         <div className={styles.container}>
             <MainTitle />
             {user?.email === "jmurphy5613@gmail.com" && <AdminButtons />}
-            <EventCard />
+            <EventGrid events={events} />
         </div>
     )
 };
