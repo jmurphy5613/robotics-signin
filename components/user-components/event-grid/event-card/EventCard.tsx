@@ -3,7 +3,7 @@ import CodeModal from '../code-modal/CodeModal'
 import { useState } from 'react'
 import { Event } from '../../../../utils/types'
 import { useUser } from "@auth0/nextjs-auth0/client"
-import { doesUserExist } from '../../../../utils/requests/users'
+import { createUser, doesUserExist } from '../../../../utils/requests/users'
 
 
 type EventCardProps = {
@@ -28,15 +28,13 @@ const EventCard:React.FC<EventCardProps> = ({ event }) => {
         */
 
         const doesExist = await doesUserExist(user?.email)
-        if(doesExist) console.log("does exist")
         if(!doesExist) {
-            console.log("doesn't exist")
+            await createUser(user.given_name as string, user.family_name as string, user.email)
         }
-
     }
 
     if(isLoading) return <div></div>
-
+    console.log(user)
     return (
         <>
             {showCodeModal && <CodeModal setShowModal={setShowCodeModal} />}
