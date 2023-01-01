@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { getAllEvents } from "../utils/events";
 import EventGrid from "../components/user-components/event-grid/EventGrid";
+import { Event } from "../utils/types";
 
 const Home = () => {
 

@@ -1,3 +1,4 @@
+import { Event } from '../../../utils/types'
 import EventCard from './event-card/EventCard'
 import styles from './EventGrid.module.css'
 
@@ -10,7 +11,7 @@ const EventGrid:React.FC<EventGridProps> = ({ events }) => {
         <div className={styles.grid}>
             {events.map((element, index) => {
                 return (
-                    <EventCard />
+                    <EventCard event={events[index]} />
                 )
             })}
         </div>

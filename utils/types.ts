@@ -12,5 +12,6 @@ export type Event = {
     endDate: Date,
     title: string,
     code: number,
+    description: string,
     attendees: Array<User>
 }
