@@ -1,4 +1,5 @@
 import axios from "axios"
+import { NextRouter } from "next/router"
 import { apiURL } from "./constants"
 
 
@@ -14,7 +15,8 @@ export const createEvent = async (
     endMonth: number,
     endDay: number,
     endHour: number,
-    endMinute: number
+    endMinute: number,
+    router: NextRouter
 ) => {
     const startDate = new Date(startYear, startMonth-1, startDay, startHour, startMinute)
     const endDate = new Date(endYear, endMonth-1, endDay, endHour, endMinute)
@@ -26,9 +28,10 @@ export const createEvent = async (
         startDate: startDate,
         endDate: endDate,
         code: code,
-        title: name
+        title: name,
+        description: description
     }).then(res => {
-        console.log(res)
+        router.push('/dashboard')
     });
 }
 

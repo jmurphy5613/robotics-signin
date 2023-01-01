@@ -36,9 +36,9 @@ const Create = () => {
             endMonth,
             endDay,
             endHour,
-            endMinute
+            endMinute,
+            router
         )
-        router.push('/dashboard')
     }
 
     return (
