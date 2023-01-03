@@ -13,8 +13,11 @@ export const createUser = async (
     })
 }
 
-export const doesUserExist = async (email: string) => {
+export const getUserByEmail = async (email: string) => {
     const res = await axios.get(`${apiURL}/users/get-by-email/${email}`)
-    if(res.data.message) return false
-    return true
+    return res.data
+}
+
+export const registerUserForEventByIds = async (userId: number, eventId: number) => {
+    await axios.post(`${apiURL}/users/register-by-ids/${userId}/${eventId}`)
 }

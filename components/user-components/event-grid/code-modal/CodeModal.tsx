@@ -2,12 +2,32 @@ import styles from './CodeModal.module.css'
 import { IconContext } from 'react-icons'
 import { AiOutlineQuestionCircle } from 'react-icons/ai'
 import { BsXLg } from 'react-icons/bs'
+import { Event, User } from '../../../../utils/types';
+import { useState } from 'react';
+import { getUserByEmail, registerUserForEventByIds } from '../../../../utils/requests/users';
+import { useUser } from '@auth0/nextjs-auth0/client'
 
 type CodeModalType = {
-    setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+    setShowModal: React.Dispatch<React.SetStateAction<boolean>>,
+    event: Event
 };
 
-const CodeModal:React.FC<CodeModalType> = ({ setShowModal }) => {
+const CodeModal:React.FC<CodeModalType> = ({ setShowModal, event }) => {
+
+    const [codeEntered, setCodeEntered] = useState<number>()
+
+    const { user, isLoading } = useUser()
+
+    const onSubmit = async () => {
+        console.log(codeEntered, event.code)
+        if(codeEntered === event.code && user?.email) {
+            const userData = await getUserByEmail(user?.email) as User
+            await registerUserForEventByIds(userData.id, event.id)
+        }
+    }
+
+    if(isLoading) return <div></div>
+
     return (
         <div className={styles.container}>
             <div className={styles["modal-container"]}>
@@ -26,8 +46,14 @@ const CodeModal:React.FC<CodeModalType> = ({ setShowModal }) => {
                 <input
                     className={styles["code-input"]}
                     placeholder="got the code?"
+                    type="number"
+                    onChange={(e) => {
+                        setCodeEntered(e.target.valueAsNumber)
+                    }}
                 />
-                <button className={styles.submit}>Lets go!</button>
+                <button className={styles.submit} onClick={() => {
+                    onSubmit()
+                }}>Lets go!</button>
             </div>
         </div>
     );
