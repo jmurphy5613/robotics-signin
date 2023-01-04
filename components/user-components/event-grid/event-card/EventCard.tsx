@@ -1,9 +1,9 @@
 import styles from "./EventCard.module.css";
 import CodeModal from "../code-modal/CodeModal";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Event } from "../../../../utils/types";
 import { useUser } from "@auth0/nextjs-auth0/client";
-import { createUser, getUserByEmail } from "../../../../utils/requests/users";
+import { createUser, getUserByEmail } from "../../../../utils/requests/users"
 
 type EventCardProps = {
     event: Event;
@@ -11,8 +11,17 @@ type EventCardProps = {
 
 const EventCard: React.FC<EventCardProps> = ({ event }) => {
     const [showCodeModal, setShowCodeModal] = useState(false);
+    const [disabled, setDisabled] = useState(false)
 
     const { user, isLoading } = useUser();
+
+    const alreadyRegistered = () => {
+        if (!user && event) return;
+        console.log(event)
+        for(const registeredUser of event.attendees) {
+            if(registeredUser.email === user.email) setDisabled(true)
+        }
+    }
 
     const createUserIfNeeded = async () => {
         if (!user?.email) return;
@@ -36,6 +45,10 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
         }
     };
 
+    useEffect(() => {
+        if(!isLoading) alreadyRegistered()
+    }, [isLoading])
+
     if (isLoading) return <div></div>;
 
     return (
@@ -44,10 +57,12 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
                 <CodeModal event={event} setShowModal={setShowCodeModal} />
             )}
             <div className={styles.container}>
+                {disabled && <h3 className={styles.attended}>you attended!</h3>}
                 <h1 className={styles.title}>{event.title}</h1>
                 <h3 className={styles.description}>{event.description}</h3>
                 <div className={styles["button-group"]}>
                     <button
+                        disabled={disabled}
                         className={styles.going}
                         onClick={() => {
                             console.log(showCodeModal)
@@ -57,8 +72,10 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
                     >
                         I'm here!
                     </button>
-                    <button className={styles["not-going"]}>
-                        Taking a rain check
+                    <button
+                        disabled={disabled}
+                        className={styles["not-going"]}>
+                            Taking a rain check
                     </button>
                 </div>
             </div>
