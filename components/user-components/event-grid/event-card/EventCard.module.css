@@ -5,7 +5,7 @@
     border: 1px solid rgb(229, 231, 235, 0.15);
     border-radius: 0.5rem;
     box-sizing: border-box;
-    min-width: 45%;
+    min-width: 45vw;
     position: relative;
 }
 

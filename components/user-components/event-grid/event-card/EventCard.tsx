@@ -16,13 +16,9 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
     const { user, isLoading } = useUser();
 
     const alreadyRegistered = () => {
-        if (isLoading && event) return;
-        if(!user) {
-            setDisabled(true)
-            return;
-        }
+        if (!user && event) return;
         for(const registeredUser of event.attendees) {
-            if(registeredUser.email === user.email) setDisabled(true)
+            if(registeredUser.email === user?.email) setDisabled(true)
         }
     }
 
@@ -68,18 +64,17 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
                         disabled={disabled}
                         className={styles.going}
                         onClick={() => {
-                            console.log(showCodeModal)
                             setShowCodeModal(true);
                             createUserIfNeeded();
                         }}
                     >
                         I'm here!
                     </button>
-                    <button
+                    {/* <button
                         disabled={disabled}
                         className={styles["not-going"]}>
                             Taking a rain check
-                    </button>
+                    </button> */}
                 </div>
             </div>
         </>

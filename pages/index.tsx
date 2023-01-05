@@ -24,6 +24,16 @@ const Home = () => {
 
     if(isLoading) return <div></div>
 
+    if(!user) {
+        return (
+            <div className={styles.container}>
+                <div className={styles.center}>
+                    <h1 className={styles.title}>Please login</h1>
+                </div>
+            </div>
+        );
+    }
+
     return (
         <div className={styles.container}>
             <MainTitle />
