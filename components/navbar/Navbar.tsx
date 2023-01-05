@@ -7,9 +7,7 @@ const Navbar = () => {
 
     const { user, isLoading } = useUser()
 
-    if(!user?.picture) return <div></div>
-
-    console.log(user?.picture)
+    if(isLoading) return <div></div>
 
     return (
         <div className={styles.container}>

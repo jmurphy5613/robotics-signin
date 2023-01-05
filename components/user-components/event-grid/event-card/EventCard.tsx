@@ -16,8 +16,11 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
     const { user, isLoading } = useUser();
 
     const alreadyRegistered = () => {
-        if (!user && event) return;
-        console.log(event)
+        if (isLoading && event) return;
+        if(!user) {
+            setDisabled(true)
+            return;
+        }
         for(const registeredUser of event.attendees) {
             if(registeredUser.email === user.email) setDisabled(true)
         }

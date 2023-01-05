@@ -1,11 +1,12 @@
 import styles from './CodeModal.module.css'
 import { IconContext } from 'react-icons'
-import { AiOutlineQuestionCircle } from 'react-icons/ai'
+import { AiOutlineQuestionCircle, AiOutlineCheck } from "react-icons/ai";
 import { BsXLg } from 'react-icons/bs'
 import { Event, User } from '../../../../utils/types';
 import { useState } from 'react';
 import { getUserByEmail, registerUserForEventByIds } from '../../../../utils/requests/users';
 import { useUser } from '@auth0/nextjs-auth0/client'
+
 
 type CodeModalType = {
     setShowModal: React.Dispatch<React.SetStateAction<boolean>>,
@@ -16,17 +17,51 @@ const CodeModal:React.FC<CodeModalType> = ({ setShowModal, event }) => {
 
     const [codeEntered, setCodeEntered] = useState<number>()
 
+    const [accepted, setAccepted] = useState(false)
+
     const { user, isLoading } = useUser()
 
     const onSubmit = async () => {
-        console.log(codeEntered, event.code)
         if(codeEntered === event.code && user?.email) {
             const userData = await getUserByEmail(user?.email) as User
             await registerUserForEventByIds(userData.id, event.id)
+            setAccepted(true)
         }
     }
 
     if(isLoading) return <div></div>
+
+    if(accepted) {
+        return (
+            <div className={styles.container}>
+                <div className={styles["modal-container"]}>
+                    <div
+                        className={styles.exit}
+                        onClick={() => {
+                            setShowModal(false);
+                        }}
+                    >
+                        <div className={styles.background}></div>
+                        <BsXLg className={styles.x} />
+                    </div>
+                    <IconContext.Provider
+                        value={{ color: "lightgreen", size: "60px" }}
+                    >
+                        <AiOutlineCheck />
+                    </IconContext.Provider>
+                    <h3 className={styles.title}>Thanks for coming out!</h3>
+                    <button
+                        className={styles.submit}
+                        onClick={() => {
+                            setShowModal(false);
+                        }}
+                    >
+                        Continue
+                    </button>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className={styles.container}>

@@ -10,6 +10,8 @@ const UserIcon:React.FC<UserIconProps> = ({ image }) => {
 
     const [showPopup, setShowPopup] = useState(true)
 
+    console.log(image)
+
     return (
         <div className={styles.container}>
             <img className={styles.image} src={image} />
