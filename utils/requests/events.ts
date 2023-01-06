@@ -1,6 +1,7 @@
 import axios from "axios"
 import { NextRouter } from "next/router"
 import { apiURL } from "../constants"
+import { Event } from "../types"
 
 
 export const createEvent = async (
@@ -42,5 +43,14 @@ export const getAllEvents = async () => {
 
 export const getEventById = async (id: number) => {
     const response = await axios.get(`${apiURL}/events/get-by-id/${id}`)
-    return response.data
+    const eventToReturn:Event = {
+        startDate: new Date(response.data.startDate),
+        endDate: new Date(response.data.endDate),
+        title: response.data.title,
+        description: response.data.description,
+        id: response.data.id,
+        code: response.data.code,
+        attendees: response.data.attendees
+    }
+    return eventToReturn
 }

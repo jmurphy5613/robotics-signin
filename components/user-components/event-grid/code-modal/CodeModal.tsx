@@ -39,6 +39,7 @@ const CodeModal:React.FC<CodeModalType> = ({ setShowModal, event }) => {
                         className={styles.exit}
                         onClick={() => {
                             setShowModal(false);
+                            document.location.reload()
                         }}
                     >
                         <div className={styles.background}></div>
@@ -54,6 +55,7 @@ const CodeModal:React.FC<CodeModalType> = ({ setShowModal, event }) => {
                         className={styles.submit}
                         onClick={() => {
                             setShowModal(false);
+                            document.location.reload();
                         }}
                     >
                         Continue
