@@ -26,15 +26,23 @@
 }
 
 .search {
-    border: none;
+    border: 1px solid #4b5563;
+    background-color: #374151;
+    color: #9ba2ae;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
     width: 15rem;
-    margin-bottom: 1rem;
-    border-radius: 0.35rem;
-    padding: 0.5rem;
+    border-radius: 0.5rem;
+    padding: 0.625rem;
+    font-family: "Inter", sans-serif;
+    margin: 1rem 0 1rem 0;
+}
+
+.search:focus {
+    outline: 2px solid #1b64f2;
 }
 
 .title {
     font-family: "Inter", sans-serif;
-    margin-bottom: 1rem;
     font-weight: 400;
 }

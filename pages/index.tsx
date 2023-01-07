@@ -19,7 +19,7 @@ const Home = () => {
             if(a.startDate < b.startDate) {
                 return 1;
             } else {
-                return -1;
+                return -1;``
             }
             return 0
         })
