@@ -14,7 +14,11 @@ const UserIcon:React.FC<UserIconProps> = ({ image }) => {
 
     return (
         <div className={styles.container}>
-            <img className={styles.image} src={image} />
+            <img
+                className={styles.image}
+                src={`${image}`}
+            />
+
             {showPopup && (
                 <div className={styles["popup-container"]}>
                     <LoginLogout login={false} />

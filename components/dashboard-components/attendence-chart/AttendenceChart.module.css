@@ -1,0 +1,40 @@
+.container {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 4rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 60vw;
+}
+
+.grid-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.name {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    color: rgb(156, 163, 175);  
+}
+
+.search {
+    border: none;
+    width: 15rem;
+    margin-bottom: 1rem;
+    border-radius: 0.35rem;
+    padding: 0.5rem;
+}
+
+.title {
+    font-family: "Inter", sans-serif;
+    margin-bottom: 1rem;
+    font-weight: 400;
+}

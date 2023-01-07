@@ -7,8 +7,18 @@ type AttendenceChartProps = {
 
 const AttendenceChart:React.FC<AttendenceChartProps> = ({ attended }) => {
     return (
-        <div>
-
+        <div className={styles.container}>
+            <h2 className={styles.title}>Attended</h2>
+            <input placeholder='Find people' className={styles.search} />
+            <div className={styles.grid}>
+                {attended.map((element, index) => {
+                    return (
+                        <div className={styles["grid-item"]}>
+                            <h3 className={styles.name}>{element.firstName} {element.lastName}</h3>
+                        </div>
+                    )
+                })}
+            </div>
         </div>
     )
 }
