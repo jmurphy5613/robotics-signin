@@ -29,6 +29,9 @@
 .button-group {
     margin-top: 1.5rem;
     height: 20%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .going {
@@ -74,4 +77,10 @@
     color: pink;
     font-size: 0.8rem;
     font-weight: 200;
+}
+
+.date {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    color: rgb(156, 163, 175);    
 }

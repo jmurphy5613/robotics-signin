@@ -14,7 +14,15 @@ const Home = () => {
     const [events, setEvents] = useState<Array<Event>>([])
 
     const setEventsData = async () => {
-        const allEvents = await getAllEvents()
+        const allEvents = await getAllEvents() as Array<Event>
+        allEvents.sort((a, b) => {
+            if(a.startDate < b.startDate) {
+                return 1;
+            } else {
+                return -1;
+            }
+            return 0
+        })
         setEvents(allEvents)
     }
 

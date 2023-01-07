@@ -50,6 +50,8 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
 
     if (isLoading) return <div></div>;
 
+    console.log(event)
+
     return (
         <>
             {showCodeModal && (
@@ -57,6 +59,7 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
             )}
             <div className={styles.container}>
                 {disabled && <h3 className={styles.attended}>you attended!</h3>}
+
                 <h1 className={styles.title}>{event.title}</h1>
                 <h3 className={styles.description}>{event.description}</h3>
                 <div className={styles["button-group"]}>
@@ -70,11 +73,13 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
                     >
                         I'm here!
                     </button>
-                    {/* <button
-                        disabled={disabled}
-                        className={styles["not-going"]}>
-                            Taking a rain check
-                    </button> */}
+                    <div className={styles["date-container"]}>
+                        <h3 className={styles.date}>
+                            {new Date(event.startDate).toDateString()},{" "}
+                            {new Date(event.startDate).toLocaleTimeString()} -{" "}
+                            {new Date(event.endDate).toLocaleTimeString()}
+                        </h3>
+                    </div>
                 </div>
             </div>
         </>
