@@ -23,7 +23,7 @@ const EventGrid:React.FC<EventGridProps> = ({ events }) => {
             </div>
             {events.map((element, index) => {
                 return (
-                    <div className={styles["grid-item"]} onClick={() => {
+                    <div key={index} className={styles["grid-item"]} onClick={() => {
                         router.push(`/dashboard/${element.id}`)
                     }}>
                         <h1 className={styles.title}>{element.title}</h1>

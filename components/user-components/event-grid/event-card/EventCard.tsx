@@ -71,7 +71,7 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
                             createUserIfNeeded();
                         }}
                     >
-                        I'm here!
+                        {`I'm here!`}
                     </button>
                     <div className={styles["date-container"]}>
                         <h3 className={styles.date}>

@@ -11,7 +11,7 @@ const EventGrid:React.FC<EventGridProps> = ({ events }) => {
         <div className={styles.grid}>
             {events.map((element, index) => {
                 return (
-                    <EventCard event={events[index]} />
+                    <EventCard key={index} event={events[index]} />
                 )
             })}
         </div>

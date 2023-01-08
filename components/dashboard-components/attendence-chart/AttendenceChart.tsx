@@ -24,7 +24,7 @@ const AttendenceChart:React.FC<AttendenceChartProps> = ({ attended }) => {
             <div className={styles.grid}>
                 {shownAttendees.map((element, index) => {
                     return (
-                        <div className={styles["grid-item"]}>
+                        <div key={index} className={styles["grid-item"]}>
                             <h3 className={styles.name}>{element.firstName} {element.lastName}</h3>
                         </div>
                     )
