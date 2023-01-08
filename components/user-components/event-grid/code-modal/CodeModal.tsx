@@ -83,9 +83,12 @@ const CodeModal:React.FC<CodeModalType> = ({ setShowModal, event }) => {
                 <input
                     className={styles["code-input"]}
                     placeholder="got the code?"
+                    value={codeEntered}
                     type="number"
                     onChange={(e) => {
-                        setCodeEntered(e.target.valueAsNumber)
+                        if(e.target.value.length <= 5) {
+                            setCodeEntered(e.target.valueAsNumber)
+                        }
                     }}
                 />
                 <button className={styles.submit} onClick={() => {
