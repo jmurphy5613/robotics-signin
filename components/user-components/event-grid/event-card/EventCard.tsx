@@ -35,12 +35,22 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
 
         const doesExist = await getUserByEmail(user?.email);
         if (doesExist.message) {
+
+            if(user.given_name && user.family_name) {
+                await createUser(
+                    user.given_name as string,
+                    user.family_name as string,
+                    user.email
+                );
+            } else {
+                await createUser(
+                    user.name as string,
+                    user.nickname as string,
+                    user.email
+                )
+            }
             
-            await createUser(
-                user.given_name as string,
-                user.family_name as string,
-                user.email
-            );
+
         }
     };
 
