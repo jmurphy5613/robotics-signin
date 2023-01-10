@@ -25,6 +25,12 @@
     padding: 2rem;
 }
 
+@media screen and (max-width: 480px) {
+    .modal-container {
+        width: 100%;
+    }
+}
+
 .title {
     font-family: "Inter", sans-serif;
     font-weight: 400;
