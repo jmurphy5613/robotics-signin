@@ -27,7 +27,7 @@ const EventPage = () => {
 
     return (
         <div className={styles.container}>
-            <h1 className={styles.title}>{event.title}</h1>
+            <h1 className={styles.title}>{event.title} (Code: {event.code})</h1>
             <h2 className={styles.time}>{event.startDate.toDateString()}, {event.startDate.toLocaleTimeString()} - {event.endDate.toLocaleTimeString()}</h2>
             <AttendenceChart attended={event.attendees} />
         </div>
