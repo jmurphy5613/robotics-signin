@@ -78,7 +78,7 @@ const CodeModal:React.FC<CodeModalType> = ({ setShowModal, event }) => {
                     <AiOutlineQuestionCircle />
                 </IconContext.Provider>
                 <h3 className={styles.title}>
-                    {`What's the code given at the metting?`}
+                    {`What's the code given at the meeting?`}
                 </h3>
                 <input
                     className={styles["code-input"]}
