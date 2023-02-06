@@ -14,7 +14,6 @@ const EventPage = () => {
     const setEventData = async (id: number) => {
         const eventData = await getEventById(id)
         setEvent(eventData)
-        console.log(eventData)
     }
 
     useEffect(() => {

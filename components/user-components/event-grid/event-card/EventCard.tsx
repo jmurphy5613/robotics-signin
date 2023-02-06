@@ -60,7 +60,6 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
 
     if (isLoading) return <div></div>;
 
-    console.log(event)
 
     return (
         <>
