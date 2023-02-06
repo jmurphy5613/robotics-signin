@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { User } from '../../../utils/types';
 import styles from './AttendenceChart.module.css'
+import { unregisterUserForEventByIds } from "../../../utils/requests/users";
 
 type AttendenceChartProps = {
-    attended: Array<User>
+    attended: Array<User>,
+    eventId: number
 };
 
-const AttendenceChart:React.FC<AttendenceChartProps> = ({ attended }) => {
+const AttendenceChart:React.FC<AttendenceChartProps> = ({ attended, eventId }) => {
 
     const [serachParam, setSearchParam] = useState<string>('')
 
@@ -14,6 +16,10 @@ const AttendenceChart:React.FC<AttendenceChartProps> = ({ attended }) => {
         const fullName = `${element.firstName} ${element.lastName}`
         return fullName.toLowerCase().includes(serachParam)
     })
+
+    const remove = async (element: User) => {
+        await unregisterUserForEventByIds(element.id, eventId)
+    }
 
     return (
         <div className={styles.container}>
@@ -26,6 +32,7 @@ const AttendenceChart:React.FC<AttendenceChartProps> = ({ attended }) => {
                     return (
                         <div key={index} className={styles["grid-item"]}>
                             <h3 className={styles.name}>{element.firstName} {element.lastName}</h3>
+                            <button className={styles.remove} onClick={() => remove(element)}>remove</button>
                         </div>
                     )
                 })}

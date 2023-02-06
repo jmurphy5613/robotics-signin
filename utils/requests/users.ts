@@ -22,6 +22,10 @@ export const registerUserForEventByIds = async (userId: number, eventId: number)
     await axios.post(`${apiURL}/users/register-by-ids/${userId}/${eventId}`)
 }
 
+export const unregisterUserForEventByIds = async (userId: number, eventId: number) => {
+    await axios.post(`${apiURL}/users/unregister-by-ids/${userId}/${eventId}`)
+}
+
 export const getAllUsers = async () => {
     const res = await axios.get(`${apiURL}/users/get-all`)
     return res.data
