@@ -12,7 +12,6 @@
     width: 60vw;
     display: flex;
     justify-content: space-between;
-    margin-top: 5rem;
 }
 
 .title {
@@ -46,4 +45,12 @@
     font-family: "Inter", sans-serif;
     font-weight: 400;
     color: rgb(156, 163, 175);    
+}
+
+.total-hours {
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    color: white;
+    margin-top: 5rem;
+    margin-bottom: 2rem;
 }
